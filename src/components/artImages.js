@@ -1,14 +1,64 @@
-const images = [
+import i_Have_Laid_This_Wold_A_Side_i_Am_Happy_with_Lord from "../images/i_Have_Laid_This_Wold_A_Side_i_Am_Happy_with_Lord.jpg";
+import My_house_is_Clean_Enought_to_Be_healty_and_it_dirty_Enought_to_Be_happy from "../images/My_house_is_Clean_Enought_to_Be_healty_and_it_dirty_Enought_to_Be_happy.jpg";
+import Peace_Black_Bull from "../images/Peace_(Black_Bull).jpg";
+import Please_Let_Me_Be from "../images/Please_Let_Me_Be.jpg";
+import Real_Girl from "../images/Real_Girl.jpg";
+import Really_Free from "../images/Untitled_(Really_Free).jpg";
+import Untitled_Atlantas_MissingChildren_Figure_with_Headdress from "../images/Untitled_(Atlanta’s_Missing Children,_Figure_with_Headdress).jpg";
+import Blue_Dog_with_Red_Collar from "../images/Untitled_(Blue_Dog_with_Red_Collar).jpg"
+import Cross_and_Trees from "../images/Untitled_(Cross_and_Trees).jpg"
+import Fish from "../images/Untitled_(Fish).jpg"
+import Girl_in_White_Socks from "../images/Untitled_(Girl_in_White_Socks).jpeg"
+import Nellie_Mae_and_Joe_Looking_into_Heaven from "../images/Untitled_(Nellie Mae_and_Joe_Looking_into_Heaven).jpg"
+import Nellie_and_Judiths_Houses from "../images/Untitled_(Nellie_and_Judith’s_Houses).jpg"
+import Nellie_in_Her_Garden from "../images/Untitled_(Nellie_in_Her_Garden).jpg"
+import Nellie_Riding_Chicken from "../images/Untitled_(Nellie_Riding_Chicken).jpg"
+import Pig_on_Expressway from "../images/Untitled_(Pig_on_Expressway).jpg"
+import Playhouse_and_Cross from "../images/Untitled_(Playhouse_and_Cross).jpg"
+import Row_of_Figures from "../images/Untitled_(Row_of_Figures).jpg"
+import Smiling_Woman from "../images/Untitled_(Smiling_Woman).jpg"
+import Something_that_Aint_Been_Born_Yet from "../images/Untitled_(Something_that_Ain’t_Been_Born_Yet).jpg"
+import The_Angel_and_the_Devils_Boot from "../images/Untitled_(The_Angel_and_the_Devil’s_Boot).jpg"
+import White_Horse from "../images/Untitled_(White_Horse).jpg"
+import Woman_in_Purple_Dress_with_Green_Chair from "../images/Untitled_(Woman_in_Purple_Dress_with_Green_Chair).jpg"
+import Woman_with_Butterfly_Wing from "../images/Untitled_(Woman_with_Butterfly_Wing).jpg"
+import Woman_with_Curly_Hair from "../images/Untitled_(Woman_with_Curly_Hair).jpg"
+import What_it_is from "../images/What_it_is.jpeg"
+import When_I_Was_a_Little_Girl from "../images/When_I_Was_a_Little_Girl.jpg"
+
+const artMetadata = [
+  {
+    title: "Untitled (Cross and Trees)",
+    image: Cross_and_Trees,
+    artist: "Nellie Mae Rowe",
+    medium: "Crayon, pencil, and marker on flattened shoebox",
+    date: "before 1978"
+  },
+  {
+    title: "Untitled (Girl in White Socks)",
+    image: Girl_in_White_Socks,
+    artist: "Nellie Mae Rowe",
+    medium: "Crayon and pencil on paper",
+    date: "1978"
+  },
+  {
+    title: "Untitled (Atlanta’s Missing Children, Figure with Headdress)",
+    image: Untitled_Atlantas_MissingChildren_Figure_with_Headdress,
+    artist: "Nellie Mae Rowe",
+    medium: "Crayon, gouache, pen, and pencil on paper",
+    date: "1981",
+    description: "Rowe’s connection with childhood and her longing for children of her own might have played a role in her decision to depict the Atlanta Child Murders—a series of abductions and violent attacks of nearly thirty people (most of them Black children or adolescents) that took place between 1979 and 1981 in Atlanta. As opposed to visually depicting these murders, Rowe addressed the violence in code, using animals and indeterminate vignettes. The figure in the center of the drawing menacingly pulling back a trench-coat-like cape like a flasher may be a more direct reference to the sexual abuse that many of the victims suffered."
+  },
   {
     title: "Peace (Black Bull)",
-    src: "/images/Peace_(Black_Bull).jpg",
+    image: Peace_Black_Bull,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, pen, and pencil on board",
     date: "before 1978"
   },
   {
     title: "Untitled (Really Free!)",
-    src: "./images/Untitled_(Really_Free!).jpg",
+    image: Really_Free,
     artist: "Nellie Mae Rowe",
     medium: "Marker and crayon on book page",
     date: "1967–1976",
@@ -16,7 +66,7 @@ const images = [
   },
   {
     title: "Real Girl",
-    src: "./images/Real_Girl.jpg",
+    image: Real_Girl,
     artist: "Nellie Mae Rowe",
     medium: "Color photograph, crayon, pen, and pencil on cardboard",
     date: "1980",
@@ -24,7 +74,7 @@ const images = [
   },
   {
     title: "Untitled (Nellie and Judith's Houses)",
-    src: "./images/Untitled_(Nellie_and_Judith’s_Houses).jpg",
+    image: Nellie_and_Judiths_Houses,
     artist: "Nellie Mae Rowe",
     medium: "Color photograph, crayon, pen, and pencil on cardboard",
     date: "1980",
@@ -32,7 +82,7 @@ const images = [
   },
   {
     title: "Untitled (Nellie_Riding_Chicken)",
-    src: "./images/Untitled_(Nellie_Riding_Chicken).jpg",
+    image: Nellie_Riding_Chicken,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on paper",
     date: "1980",
@@ -40,7 +90,7 @@ const images = [
   },
   {
     title: "My house is Clean Enought to Be healty and it dirty Enought to Be happy",
-    src: "./images/Untitled_(Nellie_Riding_Chicken).jpg",
+    image: My_house_is_Clean_Enought_to_Be_healty_and_it_dirty_Enought_to_Be_happy,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on paper",
     date: "1978–1982",
@@ -48,7 +98,7 @@ const images = [
   },
   {
     title: "What it is",
-    src: "./images/What_it_is.jpeg",
+    image: What_it_is,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, colored pencil, and pencil on paper",
     date: "1978–1982",
@@ -56,7 +106,7 @@ const images = [
   },
   {
     title: "When I Was a Little Girl",
-    src: "./images/When_I_Was_a_Little_Girl.jpg",
+    image: When_I_Was_a_Little_Girl,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, marker, colored pencil, and pencil on paper",
     date: "1978",
@@ -64,7 +114,7 @@ const images = [
   },
   {
     title: "Untitled (Something that Ain’t Been Born Yet)",
-    src: "./images/Untitled_(Something_that_Ain’t_Been_Born_Yet).jpg",
+    image: Something_that_Aint_Been_Born_Yet,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on ledger paper",
     date: "1978",
@@ -72,42 +122,42 @@ const images = [
   },
   {
     title: "Untitled (The Angel and the Devil’s Boot)",
-    src: "./images/Untitled_(The_Angel_and_the_Devil’s_Boot).jpg",
+    image: The_Angel_and_the_Devils_Boot,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, pen, and pencil on cardboard",
     date: "1978"
   },
   {
     title: "Untitled (Fish)",
-    src: "./images/Untitled_(Fish).jpg",
+    image: Fish,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, marker, and pencil on paper",
     date: "1980"
   },
   {
     title: "Untitled (Woman with Butterfly Wing)",
-    src: "./images/Untitled_(Woman_with_Butterfly_Wing).jpg",
+    image: Woman_with_Butterfly_Wing,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and marker on paper",
     date: "1980"
   },
   {
     title: "Untitled (Blue Dog with Red Collar)",
-    src: "./images/Untitled_(Blue_Dog_with_Red_Collar).jpg",
+    image: Blue_Dog_with_Red_Collar,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on paper",
     date: "1978"
   },
   {
     title: "Untitled (Pig on Expressway)",
-    src: "./images/Untitled_(Pig_on_Expressway).jpg",
+    image: Pig_on_Expressway,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and colored pencil on paper",
     date: "1980"
   },
   {
     title: "Please Let Me Be",
-    src: "./images/Please_Let_Me_Be.jpg",
+    image: Please_Let_Me_Be,
     artist: "Nellie Mae Rowe",
     medium: "Marker and pencil on mounted book page",
     date: "1947",
@@ -115,14 +165,14 @@ const images = [
   },
   {
     title: "Untitled (Row of Figures)",
-    src: "./images/Untitled_(Row_of_Figures).jpg",
+    image: Row_of_Figures,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pen on cardboard fabric bolt",
     date: "1977"
   },
   {
     title: "Untitled (Nellie Mae and Joe Looking into Heaven)",
-    src: "./images/Untitled_(Nellie Mae_and_Joe_Looking_into_Heaven).jpg",
+    image: Nellie_Mae_and_Joe_Looking_into_Heaven,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, colored pencil, and pencil on paper",
     date: "1980",
@@ -130,21 +180,21 @@ const images = [
   },
   {
     title: "Untitled (Smiling Woman)",
-    src: "./images/Untitled_(Smiling_Woman).jpg",
+    image: Smiling_Woman,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on Sara Lee poundcake lid",
     date: "before 1978"
   },
   {
     title: "i Have Laid This Wold A Side i Am Happy with Lord",
-    src: "./images/i_Have_Laid_This_Wold_A_Side_i_Am_Happy_with_Lord.jpg",
+    image: i_Have_Laid_This_Wold_A_Side_i_Am_Happy_with_Lord,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, colored pencil, and pencil on paper",
     date: "1982"
   },
   {
     title: "Untitled (Playhouse and Cross)",
-    src: "./images/Untitled_(Playhouse_and_Cross).jpg",
+    image: Playhouse_and_Cross,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on cardboard",
     date: "before 1978",
@@ -152,31 +202,31 @@ const images = [
   },
   {
     title: "Untitled (White Horse)",
-    src: "./images/Untitled_(White_Horse).jpg",
+    image: White_Horse,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, chalk, and pencil on cardboard",
     date: "1964"
   },
   {
     title: "Untitled (Woman in Purple Dress with Green Chair)",
-    src: "./images/Untitled_(Woman_in_Purple_Dress_with_Green_Chair).jpg",
+    image: Woman_in_Purple_Dress_with_Green_Chair,
     artist: "Nellie Mae Rowe",
     medium: "Crayon, pencil, and marker on paper",
     date: "1968-1982"
   },
   {
     title: "Untitled (Woman with Curly Hair)",
-    src: "./images/Untitled_(Woman_with_Curly_Hair).jpg",
+    image: Woman_with_Curly_Hair,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on ledger paper",
     date: "before 1978"
   },
   {
     title: "Untitled (Nellie in Her Garden)",
-    src: "./images/Untitled_(Nellie_in_Her_Garden).jpg",
+    image: Nellie_in_Her_Garden,
     artist: "Nellie Mae Rowe",
     medium: "Crayon and pencil on paper",
     date: "1978-1982"
   }
 ];
-export default images;
+export default artMetadata;
