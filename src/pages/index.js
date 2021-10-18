@@ -12,7 +12,9 @@ const stitchSettings = {
 const IndexPage = () => {
   let artPieces = [...artMetadata];
   let selcImg = null;
+  let doubleClickedImg = null;
   let stitches = [];
+  let zLayer = 0;
 
   const preload = (p5) => {
     artPieces.forEach((artPiece) => {
@@ -25,7 +27,6 @@ const IndexPage = () => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
     p5.createCanvas(1920, 1080).parent(canvasParentRef);
-    let zLayer = 0;
     artPieces.forEach((artPiece) => {
       artPiece.p5Image.resize(200,0);
       artPiece.left = p5.random(0, 1720);
@@ -45,12 +46,18 @@ const IndexPage = () => {
     // NOTE: Do not use setState in the draw function or in functions that are executed
     // in the draw function...
     // please use normal variables or class properties for these purposes
+    artPieces.sort((a, b) => (a.z > b.z) ? 1 : -1);
     artPieces.forEach((artPiece) => {
       if (artPiece === selcImg) {
         artPiece.left = p5.mouseX - artPiece.offsetX;
         artPiece.top = p5.mouseY + artPiece.offsetY;
         artPiece.right = p5.mouseX  - artPiece.offsetX + artPiece.p5Image.width;
         artPiece.bottom = p5.mouseY + artPiece.offsetY + artPiece.p5Image.height;
+      }
+      if (artPiece === doubleClickedImg) {
+        artPiece.z = zLayer;
+        zLayer++;
+        doubleClickedImg = null;
       }
       p5.image(artPiece.p5Image, artPiece.left, artPiece.top);
     });
@@ -60,6 +67,18 @@ const IndexPage = () => {
     })
     stitch(p5, 100, 10, 800, null);
     stitch(p5, 100, 100, null, 800);
+
+    if (selcImg) {
+      p5.textSize(14);
+      p5.text(selcImg.title, p5.mouseX + 10, p5.mouseY)
+      p5.text(selcImg.artist, p5.mouseX + 10, p5.mouseY + 16);
+      p5.text(selcImg.medium, p5.mouseX + 10, p5.mouseY + 32);
+      if (selcImg.description) {
+        p5.text(selcImg.description, p5.mouseX + 10, p5.mouseY + 48, 320);
+      }
+      p5.fill(255);
+      p5.stroke(0);
+    }
   };
 
   const mousePressed = (p5) => {
@@ -92,6 +111,31 @@ const IndexPage = () => {
     }
   }
 
+  const doubleClicked = (p5) => {
+    let mouseCurrentlyOver = [];
+    artPieces.forEach((artPiece) => {
+      if (p5.mouseX > artPiece.left && p5.mouseX < (artPiece.left + artPiece.p5Image.width)) {
+        if (p5.mouseY > artPiece.top && p5.mouseY < (artPiece.top + artPiece.p5Image.height)) {
+          mouseCurrentlyOver.push(artPiece);
+        }
+      }
+    });
+    if (mouseCurrentlyOver.length > 1) {
+      let highestZ = -1;
+      let highestZPiece = null;
+      mouseCurrentlyOver.forEach((artPiece) => {
+        if (artPiece.z > highestZ) {highestZ = artPiece.z; highestZPiece = artPiece}
+      });
+      if (highestZ !== -1 && highestZPiece) {
+        doubleClickedImg = highestZPiece;
+      }
+    } else if (mouseCurrentlyOver.length === 1) {
+      doubleClickedImg = mouseCurrentlyOver[0];
+    } else {
+      doubleClickedImg = null;
+    }
+  }
+
   const mouseReleased = (p5) => {
     selcImg = null;
   }
@@ -100,27 +144,7 @@ const IndexPage = () => {
     if (p5.keyCode === 13) {
       artPieces.forEach((artPiece) => {
         artPiece.forEach((artPiece2)=> {
-          // If these are within the stitching width
-          if (Math.abs(artPiece.left - artPiece2.right) < (stitchSettings.width/2)) {
-            if (artPiece.top < artPiece2.top && artPiece.top > artPiece2.bottom) {
 
-            }
-            if (artPiece.bottom < artPiece2.top && artPiece.bottom > artPiece2.bottom) {
-
-            }
-          }
-          if (Math.abs(artPiece.right - artPiece2.left) < (stitchSettings.width/2)) {
-            if (artPiece.top - artPiece2.bottom) {
-
-            }
-          }
-          // These are within the stitching height of each other
-          if (Math.abs(artPiece.top - artPiece2.bottom) < (stitchSettings.height/2)) {
-
-          }
-          if (Math.abs(artPiece.bottom - artPiece2.top) < (stitchSettings.height/2)) {
-
-          }
         })
       })
     }
@@ -160,6 +184,7 @@ const IndexPage = () => {
             mousePressed={mousePressed}
             mouseReleased={mouseReleased}
             keyPressed={keyPressed}
+            doubleClicked={doubleClicked}
         />
       </div>
   )
