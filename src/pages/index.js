@@ -29,10 +29,11 @@ const IndexPage = () => {
     p5.createCanvas(1920, 1080).parent(canvasParentRef);
     artPieces.forEach((artPiece) => {
       artPiece.p5Image.resize(200,0);
-      artPiece.left = p5.random(0, 1720);
+      artPiece.left = p5.random(1080, 1720);
       artPiece.top = p5.random(0, 880);
       artPiece.right = artPiece.left + artPiece.p5Image.width;
       artPiece.bottom = artPiece.top + artPiece.p5Image.height;
+      artPiece.inBounds = false;
       artPiece.offsetX = 0;
       artPiece.offsetY = 0;
       artPiece.z = zLayer;
@@ -42,10 +43,12 @@ const IndexPage = () => {
   };
 
   const draw = (p5) => {
-    p5.background(255);
+    p5.background(0);
     // NOTE: Do not use setState in the draw function or in functions that are executed
     // in the draw function...
     // please use normal variables or class properties for these purposes
+    p5.fill(255);
+    p5.rect(20, 20, 1040, 1040);
     artPieces.sort((a, b) => (a.z > b.z) ? 1 : -1);
     artPieces.forEach((artPiece) => {
       if (artPiece === selcImg) {
@@ -137,6 +140,17 @@ const IndexPage = () => {
   }
 
   const mouseReleased = (p5) => {
+    if (selcImg.left > 20 && (selcImg.left + selcImg.p5Image.width) < 1060
+        && selcImg.top > 20 && selcImg.bottom < 1060) {
+      selcImg.inBounds = true;
+      artPieces.forEach((artPiece) => {
+        if (artPiece.inBounds && artPiece !== selcImg) {
+          console.log(artPiece.title + " is in bounds.")
+        }
+      });
+    } else {
+      selcImg.inBounds = false;
+    }
     selcImg = null;
   }
 
